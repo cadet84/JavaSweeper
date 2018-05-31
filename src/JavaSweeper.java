@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import sweeper.Box;
 import sweeper.Coord;
+import sweeper.Ranges;
 
 public class JavaSweeper extends JFrame {
     private JPanel panel = new JPanel();
@@ -15,6 +16,7 @@ public class JavaSweeper extends JFrame {
     }
 
     private JavaSweeper (){
+        Ranges.setSize(new Coord(COLS, ROWS));
         setImages();
         initPanel();
         initFrame();
@@ -27,11 +29,10 @@ public class JavaSweeper extends JFrame {
                 super.paintComponent(g);
                 for (Box box : Box.values()){
                     Coord coord = new Coord(box.ordinal() * IMAGE_SIZE, 0);
-                    g.drawImage((Image) box.image,coord.x,coord.y,this); //
-                    // getImage(box.name()) почему-то не работает в jar файле, хотя работает в IDE ПОЧЕМУ??
+                    g.drawImage((Image) box.image,coord.x,coord.y,this);
+
                 }
-//                g.drawImage(getImage("bomb"), 0, 0, this);
-//                g.drawImage(getImage("num1"), IMAGE_SIZE, 0, this);
+
             }
         };
         panel.setPreferredSize(new Dimension(COLS*IMAGE_SIZE,ROWS*IMAGE_SIZE));
