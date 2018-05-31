@@ -1,19 +1,26 @@
 package sweeper;
 
-import java.util.List;
-import java.util.Random;
+import java.util.ArrayList;
 
 public class Ranges {
 
     private static Coord size;
-//    static List<Coord> allCoords;
+    static ArrayList<Coord> allCoords;
 //    static Random random;
 
     public static void setSize (Coord _size){
         size=_size;
+        allCoords = new ArrayList<Coord>();
+        for (int y=0;y<size.y; y++)
+            for (int x=0;x<size.x; x++)
+                allCoords.add(new Coord(x,y));
+
     }
-    public Coord getSize() {
+    public static Coord getSize() {
         return size;
+    }
+    public static ArrayList<Coord> getAllCoords(){
+        return allCoords;
     }
 
 }
